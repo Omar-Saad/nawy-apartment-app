@@ -51,4 +51,11 @@ export class ApartmentResponseDto {
   })
   @Expose()
   address: string;
+
+  @ApiPropertyOptional({
+    example: ['/uploads/image1.jpg', '/uploads/image2.jpg'],
+    description: 'List of image URLs',
+  })
+  @Expose()
+  images?: string[];
 }

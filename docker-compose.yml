@@ -1,4 +1,15 @@
 services:
+  frontend:
+    build:
+      context: ./nawy-client-app
+      dockerfile: Dockerfile
+    container_name: nawy-client-app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: always
+
   backend:
     build:
       context: ./nawy-backend
@@ -7,9 +18,11 @@ services:
     env_file:
       - ./nawy-backend/.env
     ports:
-      - "${PORT:-3000}:3000"
+      - "3001:3001"
     depends_on:
       - db
+    volumes:
+      - nawy-uploads:/usr/src/app/uploads
     restart: always
 
   db:
@@ -27,3 +40,4 @@ services:
 
 volumes:
   nawy-db-data:
+  nawy-uploads:

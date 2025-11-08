@@ -10,7 +10,7 @@ export class ApartmentFilterQueryDto extends PaginationQueryDto {
   @IsString()
   name?: string;
 
-  @ApiPropertyOptional({description: 'Filter by unit number' })
+  @ApiPropertyOptional({ description: 'Filter by unit number' })
   @IsOptional()
   @IsString()
   unitNumber?: string;

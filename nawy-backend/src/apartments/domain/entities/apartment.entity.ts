@@ -46,6 +46,13 @@ export class ApartmentEntity {
   @Column({ comment: 'Full address of the apartment' })
   address: string;
 
+  @Column('text', {
+    array: true,
+    nullable: true,
+    comment: 'List of image URLs',
+  })
+  images?: string[];
+
   @CreateDateColumn({
     type: 'timestamp',
     comment: 'Timestamp when the apartment record was created',

@@ -1,4 +1,5 @@
 import {
+  IsArray,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -63,4 +64,14 @@ export class CreateApartmentDto {
   @IsString()
   @IsNotEmpty()
   address: string;
+
+  @ApiPropertyOptional({
+    example: ['https://example.com/img1.jpg', 'https://example.com/img2.jpg'],
+    description: 'Optional list of image URLs',
+    type: [String],
+  })
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  images?: string[];
 }
